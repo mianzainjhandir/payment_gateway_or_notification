@@ -1,29 +1,70 @@
-import 'package:flutter/material.dart';
 
-void main() {
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Advance learning",
-      home: Home(),
+      debugShowCheckedModeBanner: false,
+      title: 'Advance Learning',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+        ),
+        useMaterial3: true,
+      ),
+      home: const HomeScreen(),
     );
   }
 }
-class Home extends StatefulWidget {
-  const Home({super.key});
 
-  @override
-  State<Home> createState() => _HomeState();
-}
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Advance Learning'),
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.local_fire_department,
+              size: 70,
+              color: Colors.orange,
+            ),
+            SizedBox(height: 15),
+            Text(
+              'Firebase Connected!',
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text('Welcome to Advance Learning'),
+          ],
+        ),
+      ),
+    );
   }
 }
