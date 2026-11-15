@@ -68,4 +68,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-// Facing the issue while runing on chrome.
