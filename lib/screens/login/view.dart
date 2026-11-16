@@ -1,5 +1,6 @@
 import 'package:advance_learning/l10n/app_localizations.dart';
 import 'package:advance_learning/screens/login/logic.dart';
+import 'package:advance_learning/screens/signup/view.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -280,7 +281,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             const SizedBox(width: 4),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const SignupScreen(),
+                                  ),
+                                );
+                              },
                               child: Text(
                                 localizations.translate('register'),
                                 style: const TextStyle(
