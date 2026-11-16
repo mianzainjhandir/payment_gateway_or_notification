@@ -1,4 +1,5 @@
-
+import 'package:advance_learning/l10n/app_localizations.dart';
+import 'package:advance_learning/screens/login/view.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -18,53 +19,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Advance Learning',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-        ),
-        useMaterial3: true,
-      ),
-      home: const HomeScreen(),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Advance Learning'),
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.local_fire_department,
-              size: 70,
-              color: Colors.orange,
+    return AnimatedBuilder(
+      animation: languageController,
+      builder: (context, _) {
+        final locale = languageController.locale;
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Advance Learning',
+          locale: locale,
+          builder: (context, child) {
+            return Directionality(
+              textDirection: locale.languageCode == 'ur' ? TextDirection.rtl : TextDirection.ltr,
+              child: child!,
+            );
+          },
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.blue,
             ),
-            SizedBox(height: 15),
-            Text(
-              'Firebase Connected!',
-              style: TextStyle(
-                fontSize: 23,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8),
-            Text('Welcome to Advance Learning'),
-          ],
-        ),
-      ),
+            useMaterial3: true,
+          ),
+          home: const LoginScreen(),
+        );
+      },
     );
   }
 }
