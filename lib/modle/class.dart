@@ -18,7 +18,7 @@ class NotificationServices {
 
     if(settings.authorizationStatus == AuthorizationStatus.authorized){
       print("User Granted Permission");
-    }else if(settings.authorizationStatus == AuthorizationStatus.authorized){
+    }else if(settings.authorizationStatus == AuthorizationStatus.provisional){
       print("User Granted Provided Permission");
     }else{
       print("User denied Permission");
