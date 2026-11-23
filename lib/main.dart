@@ -1,4 +1,5 @@
 import 'package:advance_learning/l10n/app_localizations.dart';
+import 'package:advance_learning/screens/home/myHomePage.dart';
 import 'package:advance_learning/screens/login/view.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
             ),
             useMaterial3: true,
           ),
-          home: const LoginScreen(),
+          home: const HomeScreen(),
         );
       },
     );
