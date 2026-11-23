@@ -9,7 +9,19 @@ class NotificationServices {
 
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
-      announcement: true
+      announcement: true,
+      carPlay: true,
+      criticalAlert: true,
+      provisional: true,
+      sound: true
     );
+
+    if(settings.authorizationStatus == AuthorizationStatus.authorized){
+      print("User Granted Permission");
+    }else if(settings.authorizationStatus == AuthorizationStatus.authorized){
+      print("User Granted Provided Permission");
+    }else{
+      print("User denied Permission");
+    }
   }
 }
