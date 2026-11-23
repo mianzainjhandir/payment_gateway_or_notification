@@ -7,6 +7,9 @@ class NotificationServices {
 
   void requestNotificationPermission() async{
 
-    NotificationSettings settings = await messaging.requestPermission();
+    NotificationSettings settings = await messaging.requestPermission(
+      alert: true,
+      announcement: true
+    );
   }
 }
